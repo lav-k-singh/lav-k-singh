@@ -12,13 +12,15 @@ body {
     min-height: 100vh;
 }
 
-/* SIDEBAR */
+/* ────────────────────────────────────────────────
+   SIDEBAR
+───────────────────────────────────────────────── */
 .sidebar {
     width: 220px;
-    background-color: #4a3b2f; /* brown */
-    color: #f2f2f2;
+    background-color: #4a3b2f; /* dark brown */
+    color: #f2f2f2;            /* light text default */
     padding: 15px;
-    border-right: 3px solid #7a2e2e; /* reddish */
+    border-right: 3px solid #7a2e2e; /* reddish border */
 }
 
 .profile-pic {
@@ -38,26 +40,70 @@ body {
     margin-bottom: 15px;
 }
 
+/* Main menu */
 .menu {
     list-style-type: none;
     padding: 0;
+    margin: 0 0 1.5em 0;
 }
 
 .menu li {
-    margin-bottom: 8px;
+    margin: 4px 0;
 }
 
 .menu a {
-    color: #f2f2f2;
+    color: #f2f2f2;              /* light gray – good visibility */
     text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    transition: background 0.2s, color 0.2s;
 }
 
 .menu a:hover {
-    text-decoration: underline;
-    color: #ffcccc;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffeb3b;              /* bright yellow on hover */
+    text-decoration: none;
 }
 
-/* CONTENT */
+/* Sidebar profile section – below main menu */
+.sidebar-profiles {
+    margin-top: 1.5em;
+    padding-top: 1em;
+    border-top: 1px solid #6b5545; /* softer separator matching theme */
+    text-align: center;
+}
+
+.profiles-title {
+    font-size: 0.95em;
+    color: #d8cfc4;
+    margin-bottom: 0.8em;
+    font-weight: 600;
+}
+
+.profile-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2em;
+    flex-wrap: wrap;
+}
+
+.profile-icons a {
+    display: inline-block;
+    transition: transform 0.15s ease;
+}
+
+.profile-icons a:hover {
+    transform: scale(1.12);
+}
+
+.profile-icons img {
+    display: block;
+    margin: 0 auto;
+}
+
+/* ────────────────────────────────────────────────
+   MAIN CONTENT
+───────────────────────────────────────────────── */
 .content {
     flex: 1;
     padding: 25px;
@@ -72,102 +118,28 @@ body {
     font-size: 12px;
     color: #555;
 }
-/* Social profile icons styling */
+
+/* Social profile icons (if still used in content somewhere) */
 .profile-links {
-    margin: 1em 0;          /* optional: adds some vertical breathing room */
+    margin: 1em 0;
 }
 
 .profile-links a {
-    margin-right: 1em;      /* space between the two logos — adjust as needed: 0.8em, 12px, 15px, etc. */
-    text-decoration: none;  /* removes any link underline if present */
-    display: inline-block;  /* helps with consistent spacing */
+    margin-right: 1em;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .profile-links img {
-    vertical-align: middle; /* aligns the logos nicely if their heights differ slightly */
-    transition: opacity 0.2s; /* optional: subtle hover effect */
+    vertical-align: middle;
+    transition: opacity 0.2s;
 }
 
 .profile-links a:hover img {
-    opacity: 0.8;           /* optional: slight fade on hover */
-}
-/* Menu icons styling */
-.menu-icon {
-    width: auto;
-    height: 24px;               /* Adjust size to fit your menu height */
-    vertical-align: middle;
-    margin-right: 10px;         /* Space between icon and text */
-    border-radius: 3px;         /* Optional: slight rounding */
+    opacity: 0.8;
 }
 
-/* Make menu items with icons look nice */
-.menu li a {
-    display: flex;              /* Align icon + text horizontally */
-    align-items: center;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #333;                /* Adjust to your theme */
-    transition: background 0.2s;
-}
-
-.menu li a:hover {
-    background: #f0f0f0;        /* Hover highlight */
-}
-
-/* Optional: Separator or title for profiles section */
-.profiles-section {
-    margin-bottom: 1em;
-    border-bottom: 1px solid #ddd;  /* Visual separation */
-}
-
-.profiles-title {
-    font-weight: bold;
-    color: #555;
-    padding: 10px 15px;
-    font-size: 0.9em;
-    pointer-events: none;       /* Not clickable */
-}
-
-/* If sidebar is narrow, reduce padding/margins as needed */
-.sidebar {
-    width: 220px;               /* Example width – adjust if yours is different */
-}
-/* Sidebar profile section – below main menu */
-.sidebar-profiles {
-    margin-top: 1.5em;           /* space between main menu and profiles */
-    padding-top: 1em;
-    border-top: 1px solid #ddd;  /* optional separator line */
-    text-align: center;          /* center the icons */
-}
-
-.profiles-title {
-    font-size: 0.95em;
-    color: #555;
-    margin-bottom: 0.8em;
-    font-weight: 600;
-}
-
-.profile-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1.2em;                  /* space between icons */
-    flex-wrap: wrap;
-}
-
-.profile-icons a {
-    display: inline-block;
-    transition: transform 0.15s ease;
-}
-
-.profile-icons a:hover {
-    transform: scale(1.12);      /* subtle zoom on hover */
-}
-
-.profile-icons img {
-    display: block;
-    margin: 0 auto;
-}
-/* Gallery styling for pictures page */
+/* Gallery for pictures page */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -196,33 +168,4 @@ body {
     color: #555;
     background: #fff;
     border-top: 1px solid #eee;
-}
-/* Force menu links to be always clearly visible */
-.sidebar .menu a,
-.sidebar .menu li a {
-    color: #ffffff !important;          /* pure white – maximum contrast on dark bg */
-    opacity: 1 !important;              /* ensure no fade-out */
-    visibility: visible !important;
-    text-decoration: none;
-    font-weight: 500;                   /* slightly bolder for readability */
-    padding: 10px 15px;                 /* better click area */
-    display: block;                     /* full-width link */
-    transition: background 0.2s, color 0.2s;
-}
-
-/* Better hover state */
-.sidebar .menu a:hover,
-.sidebar .menu li a:hover {
-    background-color: rgba(255, 255, 255, 0.15);  /* subtle light overlay */
-    color: #ffeb3b !important;          /* bright yellow for strong hover feedback */
-    text-decoration: none;
-}
-
-/* Optional: make whole list item clickable & visible */
-.sidebar .menu li {
-    margin: 4px 0;
-}
-
-.sidebar .menu li:hover {
-    background-color: rgba(122, 46, 46, 0.3);  /* reddish tint matching your border */
 }
